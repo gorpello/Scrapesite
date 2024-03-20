@@ -27,12 +27,15 @@ struct Scrapesite: ParsableCommand {
                 "wget -k -K  -E -r -l 10 -p -N -F --restrict-file-names=windows -nH \(url)",
             ]
             
+            let output: String
+            
             if let path {
-                try shellOut(to: commands, at: path)
+                output = try shellOut(to: commands, at: path)
             } else {
-                try shellOut(to: commands)
+                output = try shellOut(to: commands)
             }
             
+            print(output)
             print("✅ Done")
         } catch {
             print("⛔️ Error")
