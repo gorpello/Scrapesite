@@ -32,7 +32,10 @@ struct Scrapesite: ParsableCommand {
             } else {
                 try shellOut(to: commands)
             }
+            
+            print("✅ Done")
         } catch {
+            print("⛔️ Error")
             let error = error as! ShellOutError
             print(error.message) // Prints STDERR
             print(error.output) // Prints STDOUT
